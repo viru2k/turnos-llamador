@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { URL_SERVICIOS, PARAMS } from '../config/config';
+import {  PARAMS } from '../config/config';
 import { User } from '../models/user.model';
+import { ConexionService } from './conexion.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
     usuario:User;
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private conexionService: ConexionService) { 
+        
+      }
 
     login(username: string, password: string) {
-        console.log(URL_SERVICIOS+"oauth/token");
+        console.log(this.conexionService.getURL_SERVICIOS()+"oauth/token");
        this.usuario = new User("","","","","",username,password,[]);
        console.log(this.usuario);
-        return this.http.post<User>(URL_SERVICIOS+"oauth/token",this.usuario);
+        return this.http.post<User>(this.conexionService.getURL_SERVICIOS()+"oauth/token",this.usuario);
            /*  .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 console.log("usuario: "+JSON.stringify(user));

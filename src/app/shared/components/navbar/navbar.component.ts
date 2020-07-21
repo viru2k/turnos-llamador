@@ -14,6 +14,8 @@ import { DialogService } from 'primeng/components/common/api';
 import { DatePipe } from '@angular/common';
 import { AlertServiceService } from './../../../services/alert-service.service';
 import { TurnoService } from '../../../services/turno.service';
+import { ConexionPath } from '../../../models/conexion-path.model';
+import { PopupConexionComponent } from '../popup-conexion/popup-conexion.component';
 
 @Component({
   selector: 'app-navbar',
@@ -50,6 +52,8 @@ export class NavbarComponent implements OnInit {
   chats;
   _userData: any;
   turnoData: any;
+  displayConexion;
+
   constructor(
     private alertServiceService: AlertServiceService,
     public dialogService: DialogService,
@@ -128,39 +132,71 @@ export class NavbarComponent implements OnInit {
 
       /*======== FIN JQUERY DEL LOGUIN =========*/
 
+
    this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required]
     });
 
-   console.log(this.f.username.value);
-   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+   const conexion = JSON.parse(localStorage.getItem('conexion'));
+   console.log(conexion);
+   if (conexion == null ) {
+        console.log('sin ruta de acceso');
+        this.configurarRuta();
+        // tslint:disable-next-line: max-line-length
+      
+      } else {
+     //   this.configurarRuta();
+        console.log('parametros de acceso');
+        console.log('URL_SERVICIO: '+ conexion.URL_SERVICIO);
+        
+   
+      console.log(this.f.username.value);
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-   if (currentUser.access_token !== '') {
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    const turnoDato = JSON.parse(localStorage.getItem('turnoDato'));
-    console.log(userData);
-    console.log(turnoDato[0].puesto_defecto);
-    console.log('usuario logueado');
-    this.loggedIn = true;
-    this.username = userData.username;
-    this.puesto = turnoDato[0].puesto_defecto;
-    console.log(userData.access_list);
-    this.asignarModulos(userData.access_list);
-    this.menuList();
-   } else {
-    console.log('sin credenciales');
-    // tslint:disable-next-line: max-line-length
-    this.alertServiceService.throwAlert('error', 'Usuario o contraseña incorrectos',  'Verifique el usuario y contraseña, su sesion puede haber expirado', '500');
+        if (currentUser.access_token !== '') {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        const turnoDato = JSON.parse(localStorage.getItem('turnoDato'));
+        console.log(userData);
+        console.log(turnoDato[0].puesto_defecto);
+        console.log('usuario logueado');
+        this.loggedIn = true;
+        this.username = userData.username;
+        this.puesto = turnoDato[0].puesto_defecto;
+        console.log(userData.access_list);
+        this.asignarModulos(userData.access_list);
+        this.menuList();
+      } else {
+        console.log('sin credenciales');
+        
+        this.alertServiceService.throwAlert('error', 'Usuario o contraseña incorrectos',  'Verifique el usuario y contraseña, su sesion puede haber expirado', '500');
+  } 
+      }
+
   }
+
+
+  configurarRuta() {
+
+    let data:any; 
+    //data = this.selecteditemRegistro;
+    const ref = this.dialogService.open(PopupConexionComponent, {
+    data,
+     header: 'Configurar conexión',
+     width: '98%',
+     height: '60%'
+    });
+
+    ref.onClose.subscribe((popupConexionComponent: PopupConexionComponent) => {
+        if (popupConexionComponent) {
+          console.log(popupConexionComponent);
+          window.location.reload();
+        }
+
+  });
+
   }
-
-accion(evt: any, overlaypanel: OverlayPanel) {
-
-  console.log(evt);
-  overlaypanel.toggle(evt);
-}
-
 
 
 asignarModulos(modulos: any) {
@@ -205,6 +241,7 @@ cerrarSesion() {
 
   console.log('sesion terminada');
   this.authenticationService.logout();
+  localStorage.removeItem('turnoDato');
   this.loggedIn = false;
   this.mantenimiento = true;
   this.llamador = true;

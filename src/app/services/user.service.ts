@@ -2,18 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-import { URL_SERVICIOS, PARAMS } from '../config/config';
+import { PARAMS } from '../config/config';
 import { User } from '../models/user.model';
 import { UsuarioModulo } from '../models/user-modulo.model';
+import { ConexionService } from './conexion.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private url: string  = URL_SERVICIOS + 'user';
+  private url: string;
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, private conexionService: ConexionService) {
+    this.url = this.conexionService.getURL_SERVICIOS() + 'user';
+  }
 
 getItem(id: number) {
   return this.http.get<User>(this.url + '/' + id);

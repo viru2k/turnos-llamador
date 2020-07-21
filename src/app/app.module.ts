@@ -88,8 +88,6 @@ import { UsuarioEditarComponent } from './pages/mantenimiento/usuario-editar/usu
 import { UsuarioModuloComponent } from './pages/mantenimiento/usuario-modulo/usuario-modulo.component';
 import { PopupUsuarioComponent } from './shared/components/popups/popup-usuario/popup-usuario.component';
 import { UsuarioComponent } from './pages/mantenimiento/usuario/usuario.component';
-import { PuestoComponent } from './pages/mantenimiento/puesto/puesto.component';
-import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-puesto-editar/popup-puesto-editar.component';
 import { SectorComponent } from './pages/mantenimiento/sector/sector.component';
 import { PopupSectorEditarComponent } from './pages/mantenimiento/sector/popup-sector-editar/popup-sector-editar.component';
 import { PopupSectorAsociarPuestoComponent } from './pages/mantenimiento/sector/popup-sector-asociar-puesto/popup-sector-asociar-puesto.component';
@@ -97,6 +95,10 @@ import { ReglasComponent } from './pages/mantenimiento/reglas/reglas.component';
 import { PopupReglasEditarComponent } from './pages/mantenimiento/reglas/popup-reglas-editar/popup-reglas-editar.component';
 import { NumerosGestionComponent } from './pages/mantenimiento/numeros/numeros-gestion/numeros-gestion.component';
 import { PopupNumerosGestionEditarComponent } from './pages/mantenimiento/numeros/numeros-gestion/popup-numeros-gestion-editar/popup-numeros-gestion-editar.component';
+import { PopupConexionComponent } from './shared/components/popup-conexion/popup-conexion.component';
+import { UsuarioSectorComponent } from './pages/mantenimiento/usuario-sector/usuario-sector.component';
+import { PuestoComponent } from './pages/mantenimiento/puesto/puesto.component';
+import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-puesto-editar/popup-puesto-editar.component';
 
 
 @NgModule({
@@ -113,15 +115,17 @@ import { PopupNumerosGestionEditarComponent } from './pages/mantenimiento/numero
     UsuarioEditarComponent,
     UsuarioModuloComponent,
     PopupUsuarioComponent,
-    PuestoComponent,
-    PopupPuestoEditarComponent,
     SectorComponent,
     PopupSectorEditarComponent,
     PopupSectorAsociarPuestoComponent,
     ReglasComponent,
     PopupReglasEditarComponent,
     NumerosGestionComponent,
-    PopupNumerosGestionEditarComponent
+    PopupNumerosGestionEditarComponent,
+    PopupConexionComponent,
+    UsuarioSectorComponent,
+    PuestoComponent,
+    PopupPuestoEditarComponent
   ],
   imports: [
 
@@ -166,13 +170,13 @@ import { PopupNumerosGestionEditarComponent } from './pages/mantenimiento/numero
      UsuarioEditarComponent,
      UsuarioModuloComponent,
     PopupUsuarioComponent,
-    PopupPuestoEditarComponent,
     PopupSectorEditarComponent,
     PopupSectorAsociarPuestoComponent,
     PopupReglasEditarComponent,
     PopupNumerosGestionEditarComponent,
-    
-
+    PopupConexionComponent,
+    UsuarioSectorComponent,
+    PopupPuestoEditarComponent
     ],
   providers: [CurrencyPipe, DecimalPipe,
     PushNotificationService, ExcelService, { provide: LOCALE_ID, useValue: 'es-Ar' },

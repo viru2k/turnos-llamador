@@ -6,10 +6,10 @@ import { EmptyComponent } from './pages/info/empty/empty.component';
 import { NotFoundComponent } from './pages/info/not-found/not-found.component';
 import { UsuarioComponent } from './pages/mantenimiento/usuario/usuario.component';
 import { NumerosGestionComponent } from './pages/mantenimiento/numeros/numeros-gestion/numeros-gestion.component';
-import { PuestoComponent } from './pages/mantenimiento/puesto/puesto.component';
 import { SectorComponent } from './pages/mantenimiento/sector/sector.component';
 import { ReglasComponent } from './pages/mantenimiento/reglas/reglas.component';
 import { LlamadorSectorComponent } from './pages/llamador/llamador-sector/llamador-sector.component';
+import { PuestoComponent } from './pages/mantenimiento/puesto/puesto.component';
 
 const routes: Routes = [
 
@@ -30,8 +30,8 @@ const routes: Routes = [
 
 { path: 'usuario', component: UsuarioComponent },
 { path: 'numero', component: NumerosGestionComponent },
-{ path: 'puesto', component: PuestoComponent },
 { path: 'sector', component: SectorComponent },
+{ path: 'puesto', component: PuestoComponent },
 { path: 'reglas', component: ReglasComponent },
 
 
@@ -45,6 +45,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
+
 
 
 

@@ -5,6 +5,7 @@ import { UserService } from './../../../services/user.service';
 import { UsuarioModulo } from '../../../models/user-modulo.model';
 import { UsuarioModuloComponent } from './../usuario-modulo/usuario-modulo.component';
 import { UsuarioEditarComponent } from './../usuario-editar/usuario-editar.component';
+import { UsuarioSectorComponent } from './../usuario-sector/usuario-sector.component';
 
 @Component({
   selector: 'app-usuario',
@@ -26,9 +27,10 @@ export class UsuarioComponent implements OnInit {
     
       { field: 'nombreyapellido', header: 'Nombre y apellido',  width: '50%' },
       { field: 'email', header: 'Usuario',  width: '30%' },
+      { field: '', header: 'Puesto',  width: '10%' },
       { field: '', header: 'Permisos',  width: '10%' },
       { field: '', header: 'Contraseña',  width: '10%' },
-      { field: '', header: 'Acción',  width: '10%' },
+      { field: '', header: 'Acción',  width: '10%' }
       
       
    ];
@@ -116,6 +118,27 @@ editarPermiso(elemento: any) {
   // tslint:disable-next-line: no-shadowed-variable
   ref.onClose.subscribe((UsuarioModulo: any) => {
     if (UsuarioModulo) {
+      this.loadlist();
+    }
+
+  });
+
+}
+
+
+editarSector(elemento: any) {
+  console.log(elemento);  
+  const data: any = elemento;
+  const ref = this.dialogService.open(UsuarioSectorComponent, {
+  data,
+   header: 'Editar sector usuario',
+   width: '50%',
+   height: '60%'
+  });
+
+  // tslint:disable-next-line: no-shadowed-variable
+  ref.onClose.subscribe((UsuarioSectorComponent: any) => {
+    if (UsuarioSectorComponent) {
       this.loadlist();
     }
 

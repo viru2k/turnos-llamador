@@ -1,7 +1,13 @@
 
-export const URL_SERVICIOS = 'http://localhost/api-turnos/public/api/';
-export const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
-export const URL_ARCHIVO = 'http://localhost/api-turnos/public/';
+//export const URL_SERVICIOS = 'http://localhost/api-turnos/public/api/';
+//export const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+//export const URL_ARCHIVO = 'http://localhost/api-turnos/public/';
+//let conexion:any ;
+//JSON.parse(localStorage.getItem('conexion'));
+//export let URL_SERVICIOS = conexion.URL_SERVICIOS;
+//export let config  = conexion.config.url;
+//export let URL_ARCHIVO = conexion.URL_ARCHIVO;
+
 
 
 //export const URL_SERVICIOS = 'http://productosgraziani.com.ar/api-calidad/public/api/';
