@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { TurnoService } from '../../../services/turno.service';
+import { LlamadorColaComponent } from './../llamador-cola/llamador-cola.component';
+import { AlertServiceService } from '../../../services/alert-service.service';
+import { MessageService, DialogService } from 'primeng/api';
 
 @Component({
   selector: 'app-llamador-sector',
@@ -11,7 +14,7 @@ export class LlamadorSectorComponent implements OnInit {
 
   selectedItem: any;
   loading;
-  constructor(private turnoService: TurnoService) { }
+  constructor(private turnoService: TurnoService, private alertServiceService: AlertServiceService,  public dialogService: DialogService, private messageService: MessageService) { }
 
   ngOnInit() {
   
@@ -52,4 +55,26 @@ obtenerDatosPuestos() {
      });
 } catch (error) {
 }
+
+
+listadoAtendidos(elemento: any) {
+  console.log(elemento);  
+  const data: any = elemento;
+  const ref = this.dialogService.open(LlamadorColaComponent, {
+  data,
+   header: 'Números',
+   width: '70%',
+   height: '90%'
+  });
+
+  // tslint:disable-next-line: no-shadowed-variable
+  ref.onClose.subscribe((LlamadorColaComponent: any) => {
+    if (LlamadorColaComponent) {
+     // this.loadlist();
+    }
+
+  });
+
+}
+
 }

@@ -26,16 +26,28 @@ export class TurnoService {
     return this.http.get<any[]>(this.url + 'turnos/llamar/llamar?sector_usuario_id=' + sector_usuario_id);
     }
 
+  llamarNumeroSeleccionado(sector_usuario_id: string, numero_id: string) {
+    return this.http.get<any[]>(this.url + 'turnos/llamar/llamar/seleccionado?sector_usuario_id=' + sector_usuario_id+ '&numero_id='+ numero_id);
+    }
+
 
   LlamarRepetir(sector_usuario_id: string, numero_id: string) {
     return this.http.get<any[]>(this.url + 'turnos/llamar/llamar/repetir?sector_usuario_id=' + sector_usuario_id + '&numero_id=' + numero_id);
 }
 
-getListadoPantalla() {
-  return this.http.get<any[]>(this.url + 'turnos/llamar/pantalla');
-  }
+  getListadoPantalla() {
+    return this.http.get<any[]>(this.url + 'turnos/llamar/pantalla');
+    }
+
+    getListadoSectorCondicion(estado: string, consulta: string, usuarioId: string, sectorId: string) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any[]>(this.url + 'turnos/consulta/condicion/estado?estado=' + estado + '&consulta=' + consulta + '&usuario_id=' + usuarioId + '&sector_id=' + sectorId);
+    }
 
 
+/* -------------------------------------------------------------------------- */
+/*                  CONFIGURACION DE PUESTO, SECTOR Y USUARIO                 */
+/* -------------------------------------------------------------------------- */
   
   getSectorByUsuario(usuario_id: string) {
     return this.http.get<any[]>(this.url + 'turnos/usuario/sector?usuario_id=' + usuario_id );

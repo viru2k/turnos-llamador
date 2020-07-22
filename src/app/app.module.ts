@@ -176,7 +176,9 @@ import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-p
     PopupNumerosGestionEditarComponent,
     PopupConexionComponent,
     UsuarioSectorComponent,
-    PopupPuestoEditarComponent
+    PopupPuestoEditarComponent,
+    // acciones
+    LlamadorColaComponent
     ],
   providers: [CurrencyPipe, DecimalPipe,
     PushNotificationService, ExcelService, { provide: LOCALE_ID, useValue: 'es-Ar' },
