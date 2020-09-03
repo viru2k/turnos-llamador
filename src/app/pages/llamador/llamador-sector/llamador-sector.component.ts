@@ -5,7 +5,10 @@ import { LlamadorColaComponent } from './../llamador-cola/llamador-cola.componen
 import { AlertServiceService } from '../../../services/alert-service.service';
 import { MessageService, DialogService } from 'primeng/api';
 import { Filter } from './../../../shared/filter';
-import { DocumentService } from './../../../services/document-service.service';
+
+import { SocketService } from './../../../services/socket.service';
+
+
 
 @Component({
   selector: 'app-llamador-sector',
@@ -20,14 +23,24 @@ export class LlamadorSectorComponent implements OnInit {
   tieneNotificacion = 'NO';
 
   constructor(private turnoService: TurnoService, private alertServiceService: AlertServiceService,
-              private documentService: DocumentService, public dialogService: DialogService,
+              private socketService: SocketService, public dialogService: DialogService,
               private messageService: MessageService, private filter: Filter) { }
 
   ngOnInit() {
-   this.getProximoNumero();
+
+    this.socketService.listen('datos')
+    .subscribe((data: any) => {
+      console.log(data);
+      if (data === 'llamando-nuevo-cliente') {
+          console.log(data);
+          // evaluo si hay nuevo cliente
+      }
+    });
+
+
+    this.getProximoNumero();
   }
 
-   
 
   accion(event: any, overlaypanel: OverlayPanel) {
 
@@ -74,6 +87,10 @@ getProximoNumero() {
 /*                           LLAMAR PROXIMO CLIENTE                           */
 /* -------------------------------------------------------------------------- */
 
+test() {
+  this.socketService.emitir('send-message', 'llamando llamador');
+}
+
   llamar() {
     const userData = JSON.parse(localStorage.getItem('userData'));
     console.log(userData);
@@ -85,7 +102,7 @@ getProximoNumero() {
           this.puesto = [];
           this.loading = false;
           this.puesto = resp;
-          this.documentService.sendMessage('llamando-pantalla');
+          this.socketService.emitir('send-message', 'llamando-pantalla');
         }
       console.log(resp);
       //NO DEBERIA IR ACA

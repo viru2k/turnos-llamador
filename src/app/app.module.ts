@@ -164,7 +164,7 @@ import { PopupVideoComponent } from './pages/pantalla/video-administrar/popup-vi
     PivotViewModule ,
     SweetAlert2Module.forRoot(),
     AutofocusModule,
-    SocketIoModule.forRoot(  (((JSON.parse(localStorage.getItem('conexion'))) !== undefined) ?   { url: 'http://localhost:4444', options: {} }: (JSON.parse(localStorage.getItem('conexion')).conexion))),
+    //SocketIoModule.forRoot(  (((JSON.parse(localStorage.getItem('conexion'))) !== undefined) ?   { url: 'http://localhost:4444', options: {} }: (JSON.parse(localStorage.getItem('conexion')).conexion))),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
