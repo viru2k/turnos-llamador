@@ -10,6 +10,8 @@ import { SectorComponent } from './pages/mantenimiento/sector/sector.component';
 import { ReglasComponent } from './pages/mantenimiento/reglas/reglas.component';
 import { LlamadorSectorComponent } from './pages/llamador/llamador-sector/llamador-sector.component';
 import { PuestoComponent } from './pages/mantenimiento/puesto/puesto.component';
+import { LlamadorColaComponent } from './pages/llamador/llamador-cola/llamador-cola.component';
+import { VideoAdministrarComponent } from './pages/pantalla/video-administrar/video-administrar.component';
 
 const routes: Routes = [
 
@@ -22,6 +24,13 @@ const routes: Routes = [
 
 { path: 'llamador', component: LlamadorSectorComponent },
 { path: 'usuario', component: UsuarioComponent },
+{ path: 'llamador/cola', component: LlamadorColaComponent },
+
+/* -------------------------------------------------------------------------- */
+/*                                    VIDEO                                   */
+/* -------------------------------------------------------------------------- */
+
+{ path: 'video', component: VideoAdministrarComponent },
 
 /* -------------------------------------------------------------------------- */
 /*                                MANTENIMIENTO                               */
@@ -45,6 +54,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
+
 
 
 

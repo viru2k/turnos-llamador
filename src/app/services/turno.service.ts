@@ -19,7 +19,7 @@ export class TurnoService {
   }
 
   getProximoNumero(id: number) {
-  return this.http.get<any[]>(this.url + 'turnos/llamar/proximo');
+  return this.http.get<any[]>(this.url + 'turnos/llamar/proximo?sector_usuario_id=' + id);
   }
 
   Llamar(sector_usuario_id: string) {
@@ -88,7 +88,14 @@ export class TurnoService {
     return this.http.put<any>(this.url + 'mantenimiento/puesto/' + id, usuario);
   }
 
+/* -------------------------------------------------------------------------- */
+/*                                   VIDEOS                                   */
+/* -------------------------------------------------------------------------- */
+
 
   
+getMultimedia() {
+  return this.http.get<any[]>(this.url + 'multimedia/ordenado');
+  }
 
 }

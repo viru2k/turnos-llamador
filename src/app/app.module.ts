@@ -8,18 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { LlamadorSectorComponent } from './pages/llamador/llamador-sector/llamador-sector.component';
 import { LlamadorColaComponent } from './pages/llamador/llamador-cola/llamador-cola.component';
-
-
-
-
-
-
-
+import { SocketIoModule } from 'ngx-socket-io';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { registerLocaleData, LocationStrategy, HashLocationStrategy, CurrencyPipe, DecimalPipe } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule  } from '@angular/common/http';
 
@@ -57,7 +50,9 @@ import {PanelModule} from 'primeng/panel';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToggleButtonModule} from 'primeng/togglebutton';
-import {StepsModule} from 'primeng/steps';
+import {FileUploadModule} from 'primeng/fileupload';
+
+
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -99,6 +94,9 @@ import { PopupConexionComponent } from './shared/components/popup-conexion/popup
 import { UsuarioSectorComponent } from './pages/mantenimiento/usuario-sector/usuario-sector.component';
 import { PuestoComponent } from './pages/mantenimiento/puesto/puesto.component';
 import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-puesto-editar/popup-puesto-editar.component';
+import { PantallaInformativaComponent } from './pages/pantalla/pantalla-informativa/pantalla-informativa.component';
+import { VideoAdministrarComponent } from './pages/pantalla/video-administrar/video-administrar.component';
+import { PopupVideoComponent } from './pages/pantalla/video-administrar/popup-video/popup-video.component';
 
 
 @NgModule({
@@ -125,7 +123,10 @@ import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-p
     PopupConexionComponent,
     UsuarioSectorComponent,
     PuestoComponent,
-    PopupPuestoEditarComponent
+    PopupPuestoEditarComponent,
+    PantallaInformativaComponent,
+    VideoAdministrarComponent,
+    PopupVideoComponent
   ],
   imports: [
 
@@ -158,11 +159,12 @@ import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-p
     SelectButtonModule,
     ColorPickerModule,
     ToggleButtonModule,
+    FileUploadModule,
     AutoCompleteModule,
     PivotViewModule ,
     SweetAlert2Module.forRoot(),
     AutofocusModule,
-
+    SocketIoModule.forRoot(  (((JSON.parse(localStorage.getItem('conexion'))) !== undefined) ?   { url: 'http://localhost:4444', options: {} }: (JSON.parse(localStorage.getItem('conexion')).conexion))),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
@@ -177,6 +179,7 @@ import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-p
     PopupConexionComponent,
     UsuarioSectorComponent,
     PopupPuestoEditarComponent,
+    PopupVideoComponent,
     // acciones
     LlamadorColaComponent
     ],

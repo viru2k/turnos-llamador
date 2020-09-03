@@ -112,13 +112,13 @@ $(function() {
     // Sidebarmenu
     // ============================================================== 
     $(function() {
-        $('#sidebarnav').AdminMenu();
+     //   $('#sidebarnav').AdminMenu();
     });
 
     // ============================================================== 
     // Perfact scrollbar
     // ============================================================== 
-    $('.scroll-sidebar, .right-side-panel, .message-center, .right-sidebar').perfectScrollbar();
+    //$('.scroll-sidebar, .right-side-panel, .message-center, .right-sidebar').perfectScrollbar();
     
     // ============================================================== 
     // Resize all elements

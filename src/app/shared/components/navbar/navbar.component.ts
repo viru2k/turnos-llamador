@@ -344,7 +344,7 @@ menuList() {
 
   this.general = [
     {label: 'Llamador', visible: !this.llamador, routerLink: 'llamador'},
-    {label: 'Videos', visible: !this.videos, routerLink: 'videos'},
+    {label: 'Videos', visible: !this.videos, routerLink: 'video'},
     {label: 'Números', visible: !this.auditor, routerLink: 'numeros'},    
     {
 

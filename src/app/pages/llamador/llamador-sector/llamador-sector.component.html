@@ -1,20 +1,25 @@
 
-<div class=" faq-title text-center pb-3 pt-2  "></div>
+<div class="main">
   <div class=" faq-title text-center pb-3 pt-2  "></div>
+  <div class=" faq-title text-center pb-3 pt-2  "></div>
+  
 <div class=" faq-title  d-flex justify-content-center align-items-center d-flex align-items-center mt-5">
 <div class="row">
-  <h5>LLAMANDO NUMERO</h5>
+  <h5 class="texto-llamador-sub">LLAMANDO</h5>
  <a  (click)="accion($event,op)"  class="icon-hover ml-2"> <i class="icon-herramientas-administrativas icon-color-info fa-lg"></i></a>  
 </div>   
 </div>
 
-<div class="d-flex justify-content-center align-items-center d-flex align-items-center mt-5">
-    <label class="texto-llamador">AB123</label>  
-    
+<div  class="d-flex justify-content-center align-items-center d-flex align-items-center mt-5 wrapper">
+      
+      <label    *ngIf="puesto.length !== 0" class="texto-llamador">{{puesto.sector_abreviado}}{{filter.padLeft(puesto.numero,'0',3)}}</label>  
+      <label    *ngIf="((puesto.length === 0) && (tieneNotificacion === 'NO'))" class="texto-llamador">SIN NUMEROS</label>  
+      <label    *ngIf="tieneNotificacion === 'SI'" class="texto-notificacion">NUEVOS NUMEROS</label>  
 </div>
 
 <div class="d-flex justify-content-center align-items-center d-flex align-items-center mt-5">
-    <button class=" col-md-12 col-sm-12 col-xl-6 col-lg-6 btn btn-lg btn-info m-1"> LLAMAR</button>
+  
+    <button class=" col-md-12 col-sm-12 col-xl-6 col-lg-6 btn btn-lg btn-info m-1 button-text" (click)="llamar()"> LLAMAR</button>
 </div>
 
       
@@ -23,9 +28,9 @@
       <h5>ACCION</h5>
     </div>
    
-  
-    <div class=" m-2">  <button class="texto-roboto  btn btn-info btn-block" (click)="listadoAtendidos()">Números atendidos</button></div>
+   <div class=" m-2">  <button class="texto-roboto  btn btn-info btn-block" (click)="listadoAtendidos()">Números atendidos</button></div> 
     <div class=" m-2"> <button class="texto-roboto  btn btn-warning  btn-block">Volver a llamar</button></div>
     <div class=" m-2"><button class="texto-roboto  btn btn-success  btn-block">Números pendientes</button></div>
       
   </p-overlayPanel>
+</div>
