@@ -15,7 +15,7 @@ export class VideoAdministrarComponent implements OnInit {
   cols: any[];
   columns: any[];
   elementos: any[];
-  selecteditems: any;
+  selecteditems: any = [];
   loading;
 
   constructor(
@@ -70,7 +70,9 @@ guardarOrden() {
 
 
 buscar(elemento: any) {
-  console.log(elemento);  
+  console.log(this.selecteditems);
+  elemento['orden_total'] = this.elementos.length;
+  elemento['es_nuevo'] = 'NO';
   const data: any = elemento;
   const ref = this.dialogService.open(PopupVideoComponent, {
   data,
@@ -82,6 +84,7 @@ buscar(elemento: any) {
   // tslint:disable-next-line: no-shadowed-variable
   ref.onClose.subscribe((PopupVideoComponent: any) => {
     if (PopupVideoComponent) {
+      
       this.loadlist();
     }
 
@@ -93,8 +96,10 @@ buscar(elemento: any) {
 
 
 nuevo() {
-
-  const data: any = null;
+  let  elemento: any[] = [];
+  elemento['orden_total'] = this.elementos.length;
+  elemento['es_nuevo'] = 'SI';
+  const data: any = elemento;
   const ref = this.dialogService.open(PopupVideoComponent, {
   data,
    header: 'Subir archivo multimedia',
@@ -105,9 +110,14 @@ nuevo() {
   // tslint:disable-next-line: no-shadowed-variable
   ref.onClose.subscribe((PopupVideoComponent: any) => {
     if (PopupVideoComponent) {
+      console.log('nuevo');
       this.loadlist();
     }
   });
+
+}
+
+eliminar(event) {
 
 }
 }

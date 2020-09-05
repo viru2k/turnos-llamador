@@ -98,4 +98,11 @@ getMultimedia() {
   return this.http.get<any[]>(this.url + 'multimedia/ordenado');
   }
 
+  UploadFileDatos(archivos: any){
+    return this.http.post<any>(this.url + 'multiuploads/multimedia/datos', archivos);
+  }
+  
+  UploadFileDatosUpdate (archivos: any, id: string) {
+    return this.http.put<any>(this.url + 'multiuploads/multimedia/datos/' + id, archivos);
+  }
 }
