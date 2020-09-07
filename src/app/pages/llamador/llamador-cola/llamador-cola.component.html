@@ -3,11 +3,11 @@
   </div>
     <div class="card-rounded card-header">
       <div class="ml-2 row">   
-        <button  (click)="loadMiPuesto()" class="btn btn-sm btn-info mr-3"> MI PUESTO</button> 
-        <button  (click)="loadSector()"class="btn btn-sm btn-info mr-3"> SECTOR</button> 
-        <button  (click)="loadTodosPendientes()"class="btn btn-sm btn-warning mr-3"> PENDIENTES</button> 
-        <button  (click)="loadTodosAtendidos()"class="btn btn-sm btn-warning mr-3"> ATENDIDOS</button> </div> 
-      
+        <button  (click)="loadMiPuesto()" class="btn btn-sm btn-info mr-3"><i class="fas fa-concierge-bell mr-2 fa-lg"></i> MI PUESTO</button> 
+        <button  (click)="loadSector()"class="btn btn-sm btn-success mr-3"> <i class="far fa-address-card mr-2 fa-lg"></i>SECTOR</button> 
+        <button  (click)="loadTodosPendientes()"class="btn btn-sm btn-warning mr-3"> <i class="fas fa-hourglass-end mr-2 fa-lg"></i> PENDIENTES</button> 
+        <button  (click)="loadTodosAtendidos()"class="btn btn-sm btn-danger mr-3"> <i class="far fa-calendar-times mr-2 fa-lg"></i> ATENDIDOS</button> </div> 
+
     </div>
       <div class="row m-3">
         <p-table  #dt class="pt-2"  tableStyleClass="prime-table" selectionMode="single" [columns]="cols" [value]="elementos" [loading]="loading"  [(selection)]="selecteditems"   columnResizeMode="expand" [responsive]="true"

@@ -97,6 +97,9 @@ import { PopupPuestoEditarComponent } from './pages/mantenimiento/puesto/popup-p
 import { PantallaInformativaComponent } from './pages/pantalla/pantalla-informativa/pantalla-informativa.component';
 import { VideoAdministrarComponent } from './pages/pantalla/video-administrar/video-administrar.component';
 import { PopupVideoComponent } from './pages/pantalla/video-administrar/popup-video/popup-video.component';
+import { UsuarioSectorAsociarComponent } from './pages/mantenimiento/usuario-sector-asociar/usuario-sector-asociar.component';
+import { PantallaComponent } from './pages/mantenimiento/pantalla/pantalla.component';
+import { AnfitrionComponent } from './pages/mantenimiento/anfitrion/anfitrion.component';
 
 
 @NgModule({
@@ -126,7 +129,10 @@ import { PopupVideoComponent } from './pages/pantalla/video-administrar/popup-vi
     PopupPuestoEditarComponent,
     PantallaInformativaComponent,
     VideoAdministrarComponent,
-    PopupVideoComponent
+    PopupVideoComponent,
+    UsuarioSectorAsociarComponent,
+    PantallaComponent,
+    AnfitrionComponent
   ],
   imports: [
 
@@ -178,10 +184,9 @@ import { PopupVideoComponent } from './pages/pantalla/video-administrar/popup-vi
     PopupNumerosGestionEditarComponent,
     PopupConexionComponent,
     UsuarioSectorComponent,
+    UsuarioSectorAsociarComponent,
     PopupPuestoEditarComponent,
     PopupVideoComponent,
-    // acciones
-    LlamadorColaComponent
     ],
   providers: [CurrencyPipe, DecimalPipe,
     PushNotificationService, ExcelService, { provide: LOCALE_ID, useValue: 'es-Ar' },

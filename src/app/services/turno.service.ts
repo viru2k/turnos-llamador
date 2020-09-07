@@ -88,6 +88,19 @@ export class TurnoService {
     return this.http.put<any>(this.url + 'mantenimiento/puesto/' + id, usuario);
   }
 
+
+  getSectorUsuarioAsociado(usuario_id: string) {
+    return this.http.get<any[]>(this.url + 'mantenimiento/sector/usuario/asociar?usuario_id=' + usuario_id);
+    }
+
+  setSectorUsuarioAsociado(sectores: any,id: string) {
+    return this.http.post<any>(this.url + 'mantenimiento/sector/usuario/asociar/'+ id, sectores);
+  }
+
+  delSectorAsociado(sector_usuario_asociado_id: any) {
+    return this.http.delete<any>(this.url + 'mantenimiento/sector/usuario/asociar/' + sector_usuario_asociado_id);
+  }
+
 /* -------------------------------------------------------------------------- */
 /*                                   VIDEOS                                   */
 /* -------------------------------------------------------------------------- */

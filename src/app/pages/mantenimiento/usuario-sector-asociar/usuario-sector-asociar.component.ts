@@ -5,23 +5,24 @@ import { UserService } from '../../../services/user.service';
 import { TurnoService } from './../../../services/turno.service';
 
 @Component({
-  selector: 'app-usuario-sector',
-  templateUrl: './usuario-sector.component.html',
-  styleUrls: ['./usuario-sector.component.scss']
+  selector: 'app-usuario-sector-asociar',
+  templateUrl: './usuario-sector-asociar.component.html',
+  styleUrls: ['./usuario-sector-asociar.component.scss']
 })
-export class UsuarioSectorComponent implements OnInit {
+export class UsuarioSectorAsociarComponent implements OnInit {
 
- 
+
+
   cols: any[];
   columns: any[];
   elementosSector: any[] = [];
-  elementosPuesto: any[] = [];
+  elementosAsociados: any[] = [];
   elementosUsuario: any = null;
   selecteditems: any;
   loading;
   userData: any;
   selectedSector: any;
-  selectedPuesto: any;
+  selectedAsociados: any;
   selectedModulos: any[];
   mensaje: string;
 
@@ -35,19 +36,19 @@ export class UsuarioSectorComponent implements OnInit {
     this.loadSector();
   }
 
- 
+
   loadSector() {
 
     this.loading = true;
     this.mensaje = 'Cargando sectores ...';
     try {
-        this.turnoService.getSector()
+        this.turnoService.getSectorUsuarioAsociado(this.config.data.id)
         .subscribe(resp => {
-            this.elementosSector = resp;
-            console.log(this.elementosSector);
+            this.elementosAsociados = resp;
+            console.log(this.elementosAsociados);
             this.loading = false;
             console.log(resp);
-            this.loadPuesto();
+            this.loadSecor();
         },
         error => { // error path
             console.log(error);
@@ -58,15 +59,15 @@ export class UsuarioSectorComponent implements OnInit {
     }
 }
 
-loadPuesto() {
+loadSecor() {
 
   this.loading = true;
   this.mensaje = 'Cargando puesto ...';
   try {
-      this.turnoService.getPuesto()
+      this.turnoService.getSector()
       .subscribe(resp => {
-          this.elementosPuesto = resp;
-          console.log(this.elementosPuesto);
+          this.elementosSector = resp;
+          console.log(this.elementosSector);
           this.loading = false;
           console.log(resp);
           this.loadlist();
@@ -104,15 +105,13 @@ loadPuesto() {
 
 
 
-guardarSector() {  
-
+guardarSector() {
+  console.log(this.selectedSector);
   this.loading = true;
   this.mensaje = 'Guardando sectores...';
-  console.log(this.selectedPuesto);
-  console.log(this.selectedSector);
-  if((this.selectedPuesto !== undefined) && (this.selectedSector !== undefined)) {
-    try {
-      this.turnoService.setUsuarioSector(this.selectedPuesto.puesto_nombre, this.selectedSector.id,  this.config.data.id)
+
+  try {
+      this.turnoService.setSectorUsuarioAsociado(this.selectedSector, this.config.data.id)
       .subscribe(resp => {
           console.log(resp);
           this.ref.close(resp);
@@ -123,15 +122,19 @@ guardarSector() {
        });
   } catch (error) {
     this.alertServiceService.throwAlert('error', 'Error: ' + error.status + '  Error al cargar los registros', '', '500');
-  } 
-
-  } else {
-    this.alertServiceService.throwAlert('warning','', '', '500');
   }
- /*  try {
-      this.turnoService.setUsuarioSector(this.selectedModulos, this.config.data.id)
+
+
+}
+
+borrar(e: any) {
+  console.log(e.value);
+
+  this.loading = true;
+  try {
+      this.turnoService.delSectorAsociado(e.value.sector_usuario_asociado_id)
       .subscribe(resp => {
-          console.log(resp);
+        this.loadSector();
       },
       error => { // error path
           console.log(error);
@@ -139,7 +142,10 @@ guardarSector() {
        });
   } catch (error) {
     this.alertServiceService.throwAlert('error', 'Error: ' + error.status + '  Error al cargar los registros', '', '500');
-  } */
+  }
+
 
 }
+
+
 }

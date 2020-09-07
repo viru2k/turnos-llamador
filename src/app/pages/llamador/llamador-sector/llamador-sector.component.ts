@@ -23,7 +23,7 @@ export class LlamadorSectorComponent implements OnInit {
   tieneNotificacion = 'NO';
 
   constructor(private turnoService: TurnoService, private alertServiceService: AlertServiceService,
-              private socketService: SocketService, public dialogService: DialogService,
+              private socketService: SocketService,
               private messageService: MessageService, private filter: Filter) { }
 
   ngOnInit() {
@@ -142,7 +142,7 @@ obtenerDatosPuestos() {
      });
 }
 
-
+/* 
 listadoAtendidos(elemento: any) {
   console.log(elemento);  
   const data: any = elemento;
@@ -161,7 +161,7 @@ listadoAtendidos(elemento: any) {
 
   }); 
 
-}
+} */
 
 validarNotificacion( ){
 

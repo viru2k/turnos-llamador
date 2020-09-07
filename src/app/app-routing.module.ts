@@ -24,7 +24,7 @@ const routes: Routes = [
 
 { path: 'llamador', component: LlamadorSectorComponent },
 { path: 'usuario', component: UsuarioComponent },
-{ path: 'llamador/cola', component: LlamadorColaComponent },
+{ path: 'atencion', component: LlamadorColaComponent },
 
 /* -------------------------------------------------------------------------- */
 /*                                    VIDEO                                   */

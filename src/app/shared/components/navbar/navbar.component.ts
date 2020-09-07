@@ -345,7 +345,7 @@ menuList() {
   this.general = [
     {label: 'Llamador', visible: !this.llamador, routerLink: 'llamador'},
     {label: 'Videos', visible: !this.videos, routerLink: 'video'},
-    {label: 'Números', visible: !this.auditor, routerLink: 'numeros'},    
+    {label: 'Números', visible: !this.auditor, routerLink: 'atencion'},
     {
 
     label: 'Mantenimiento',
@@ -357,6 +357,8 @@ menuList() {
               {label: 'Sector', routerLink: 'sector'},
               {label: 'Reglas de llamado', routerLink: 'reglas'},
               {label: 'Gestión de números', routerLink: 'numero'},
+              {label: 'Gestión de anfitrión', routerLink: 'anfitrion'},
+              {label: 'Gestión de pantalla', routerLink: 'pantalla'},
       
     ]
   }

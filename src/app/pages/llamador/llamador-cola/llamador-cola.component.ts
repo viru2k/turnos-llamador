@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertServiceService } from '../../../services/alert-service.service';
-import { MessageService, DialogService, DynamicDialogConfig } from 'primeng/api';
+import { MessageService, DialogService } from 'primeng/api';
 import { TurnoService } from './../../../services/turno.service';
 
 
@@ -19,7 +19,7 @@ export class LlamadorColaComponent implements OnInit {
   selecteditems: any;
   loading;
   turnoDato: any;
-  constructor(private turnoService: TurnoService, private alertServiceService: AlertServiceService,  public dialogService: DialogService, private messageService: MessageService, public config: DynamicDialogConfig) { 
+  constructor(private turnoService: TurnoService, private alertServiceService: AlertServiceService,  public dialogService: DialogService, private messageService: MessageService) { 
 
     this.cols = [
     

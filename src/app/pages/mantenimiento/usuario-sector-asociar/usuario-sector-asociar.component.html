@@ -8,22 +8,12 @@
  </div>
 
   <div class="d-flex justify-content-between mb-2 mt-2">
-    <div class="d-flex justify-content-start">
-      <p-listbox [options]="elementosSector" [(ngModel)]="selectedSector" [multiple]="false" [filter]="true" optionLabel="sector_nombre" [style]="{'width':'250px'}">
-        <p-header>
-          Sectores
-        </p-header>
-        <ng-template let-elemento pTemplate="item" >    
-            <label style="font-size: 10px;"> {{elemento.label}}</label>
-        </ng-template>
-      </p-listbox>
-  
-    </div>
+
 
     <div class="d-flex justify-content-end">
-        <p-listbox [options]="elementosPuesto" [(ngModel)]="selectedPuesto" [multiple]="false" [filter]="true" optionLabel="puesto_nombre" [style]="{'width':'240px'}">
+        <p-listbox [options]="elementosSector" [(ngModel)]="selectedSector" [multiple]="true" [checkbox]="true" [filter]="true" optionLabel="sector_nombre" [style]="{'width':'240px'}">
           <p-header>
-            Puestos
+            Sectores
           </p-header>
           <ng-template let-elemento pTemplate="item" >    
             <label style="font-size: 10px;"> {{elemento.label}}</label>
@@ -32,6 +22,22 @@
            
                      
             </div> -->
+          </ng-template>
+        </p-listbox>
+    
+      </div>
+
+      <div class="d-flex justify-content-start">
+        <p-listbox [options]="elementosAsociados"  [(ngModel)]="selectedAsociados"  [filter]="true" [multiple]="false" optionLabel="sector_nombre" [style]="{'width':'250px'}">
+          <p-header>
+            Sectores asociados
+          </p-header>
+          <ng-template let-elemento pTemplate="item" >  
+              <div class="d-flex align-items-center">
+                   <button  (click)="borrar(elemento)" class="icon-hover ml-2 mr-2 btn btn-danger btn-sm "> <i class="fas fa-trash  fa-sm"></i></button>       
+              <label style="font-size: 10px;"> {{elemento.label}}</label>
+              </div>
+           
           </ng-template>
         </p-listbox>
     
