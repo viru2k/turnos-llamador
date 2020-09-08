@@ -24,7 +24,7 @@ export class LlamadorSectorComponent implements OnInit {
 
   constructor(private turnoService: TurnoService, private alertServiceService: AlertServiceService,
               private socketService: SocketService,
-              private messageService: MessageService, private filter: Filter) { }
+              private messageService: MessageService, public filter: Filter) { }
 
   ngOnInit() {
 

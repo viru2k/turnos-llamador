@@ -19,7 +19,7 @@
     
                 <div class="d-flex justfiy-content-between row m-2">
                     <div class=" d-flex justify-content-start">
-                        <img src="{{conexionService.getURL_ARCHIVO()+'/uploads/'+product.archivo_nombre}}" [alt]="product.archivo_nombre" class="product-image"  width="32px" height="32px" />
+                        <img src="{{conexionService.getURL_ARCHIVO()+'/uploads/'+product.archivo_nombre}}" onerror="this.onerror=null; this.src='../../../../../assets/images/no-imagen.png'" class="product-image"  width="32px" height="32px" />
                         <label class="ml-2 mr-2">Archivo : {{product.archivo_nombre}}</label>
                         <label class="ml-2 mr-2">Orden : {{product.orden}}</label>
                     </div>

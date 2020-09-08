@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TurnoService } from './../../../services/turno.service';
 import { AlertServiceService } from './../../../services/alert-service.service';
 import { DialogService, MessageService } from 'primeng/api';
-import { ConexionService } from '../../../../../../turnos-anfitrion/src/app/services/conexion.service';
+
 import { PopupVideoComponent } from './popup-video/popup-video.component';
 
+import { ConexionService } from './../../../services/conexion.service';
 @Component({
   selector: 'app-video-administrar',
   templateUrl: './video-administrar.component.html',
@@ -23,7 +24,7 @@ export class VideoAdministrarComponent implements OnInit {
     private alertServiceService: AlertServiceService,
     public dialogService: DialogService,
     private messageService: MessageService,
-    private conexionService: ConexionService) {
+    public conexionService: ConexionService) {
   }
 
 
