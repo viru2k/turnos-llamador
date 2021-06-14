@@ -33,10 +33,11 @@
                   <ng-template pTemplate="header" let-columns>
                     <tr>
                        
-                        <th style="width: 50%" pSortableColumn="nombreyapellido">Nombre <p-sortIcon field="nombreyapellido"></p-sortIcon></th>
+                        <th style="width: 30%" pSortableColumn="nombreyapellido">Nombre <p-sortIcon field="nombreyapellido"></p-sortIcon></th>
                         <th style="width: 30%" pSortableColumn="email">Usuario <p-sortIcon field="email"></p-sortIcon></th>
                         <th style="width: 10%">Puesto</th>
                         <th style="width: 10%">Asociar</th>
+                        <th style="width: 10%">Reglas</th>
                         <th style="width: 10%">Permisos</th>
                         <th style="width: 10%">Contraseña</th>
                         <th style="width: 10%">Acción</th>
@@ -52,12 +53,14 @@
                     <th ></th>
                     <th ></th>
                     <th ></th>
+                    <th ></th>
+                    <th ></th>
                     </tr>
                   </ng-template>
           <ng-template pTemplate="body" let-elementos  >
               <tr style="height:20px"  > 
                                     
-                <td style="width: 50%">{{elementos.nombreyapellido}}</td>
+                <td style="width: 30%">{{elementos.nombreyapellido}}</td>
                 <td style="width: 30%">{{elementos.email}}</td>
                 <td style="width: 10%">
                   <a  (click)="editarSector(elementos)" class="icon-hover "> <i class="fas fa-concierge-bell icono-info fa-lg"></i></a>     
@@ -66,7 +69,10 @@
                   <a  (click)="editarSectorAsociacion(elementos)" class="icon-hover "> <i class="fas fa-network-wired icono-secondary fa-lg"></i></a>     
                 </td>
                 <td style="width: 10%">
-                  <a  (click)="editarPermiso(elementos)" class="icon-hover "> <i class="far fa-list-alt icono-success fa-lg"></i></a>     
+                  <a  (click)="editarReglas(elementos)" class="icon-hover "> <i class="fas fa-pencil-ruler icono-danger fa-lg"></i></a>     
+                </td>
+                <td style="width: 10%">
+                  <a  (click)="editarPermiso(elementos)" class="icon-hover "> <i class="fas fa-sliders-h icono-success fa-lg"></i></a>     
                 </td>
                 <td style="width: 10%">
                   <a  (click)="editarPassword(elementos)" class="icon-hover "> <i class="fas fa-unlock-alt icono-warning fa-lg"></i></a>     
@@ -79,3 +85,4 @@
          
       </p-table>
     </div>
+    

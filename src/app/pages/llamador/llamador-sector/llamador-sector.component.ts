@@ -87,9 +87,7 @@ getProximoNumero() {
 /*                           LLAMAR PROXIMO CLIENTE                           */
 /* -------------------------------------------------------------------------- */
 
-test() {
-  this.socketService.emitir('send-message', 'llamando llamador');
-}
+
 
   llamar() {
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -97,11 +95,14 @@ test() {
     this.turnoService.Llamar(userData.id)
       .subscribe(resp => {
 
-        if (resp) {
+
           console.log(resp);
           this.puesto = [];
           this.loading = false;
           this.puesto = resp;
+          console.log(resp['id']);
+          if (resp['id']  ) {
+            console.log('send-message');
           this.socketService.emitir('send-message', 'llamando-pantalla');
         }
       console.log(resp);
@@ -109,7 +110,7 @@ test() {
 
    //   localStorage.removeItem('turnoDato');
    //   localStorage.setItem('turnoDato', JSON.stringify(resp));
-   
+
       },
       error => {
           console.log(error.message);
@@ -117,7 +118,7 @@ test() {
           localStorage.removeItem('error');
           localStorage.setItem('error', JSON.stringify(error));
         //  this.loading_mensaje = '';
-  
+
        });
 
   }
@@ -142,13 +143,13 @@ obtenerDatosPuestos() {
      });
 }
 
-/* 
+/*
 listadoAtendidos(elemento: any) {
-  console.log(elemento);  
+  console.log(elemento);
   const data: any = elemento;
   const ref = this.dialogService.open(LlamadorColaComponent, {
   data,
-   
+
    width: '100%',
    height: '90%'
   });
@@ -159,7 +160,7 @@ listadoAtendidos(elemento: any) {
      // this.loadlist();
     }
 
-  }); 
+  });
 
 } */
 

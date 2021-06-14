@@ -1,20 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, LOCALE_ID } from '@angular/core';
 
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule  } from '@angular/common/http';
+import { environment } from '../environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { environment } from '../environments/environment';
+
 import { LlamadorSectorComponent } from './pages/llamador/llamador-sector/llamador-sector.component';
 import { LlamadorColaComponent } from './pages/llamador/llamador-cola/llamador-cola.component';
-import { SocketIoModule } from 'ngx-socket-io';
-import { ErrorInterceptor } from './helpers/error.interceptor';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
+
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { registerLocaleData, LocationStrategy, HashLocationStrategy, CurrencyPipe, DecimalPipe } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClientModule  } from '@angular/common/http';
+
 
 /* -------------------------------------------------------------------------- */
 /*                                  SERVICIOS                                 */
@@ -135,11 +138,11 @@ import { AnfitrionComponent } from './pages/mantenimiento/anfitrion/anfitrion.co
     AnfitrionComponent
   ],
   imports: [
-
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     MultiSelectModule,
-    ReactiveFormsModule,
+
     HttpClientModule ,
     BrowserAnimationsModule,
     TableModule,
@@ -181,6 +184,7 @@ import { AnfitrionComponent } from './pages/mantenimiento/anfitrion/anfitrion.co
     PopupSectorEditarComponent,
     PopupSectorAsociarPuestoComponent,
     PopupReglasEditarComponent,
+    ReglasComponent,
     PopupNumerosGestionEditarComponent,
     PopupConexionComponent,
     UsuarioSectorComponent,

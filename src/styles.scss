@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 /****************FUENTES PARA USAR ******************/
 
+
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Open+Sans|Oxygen&display=swap');
 
@@ -28,6 +33,7 @@
 @import '../node_modules/@syncfusion/ej2-angular-pivotview/styles/material.css';
 
 @import './assets/css/iconos.scss';
+
 /* ---------- MODIFICA LA ESTETICA DE UNA COLUMNA DE FORMA DINAMICA --------- */
 
 $custom-grid: var(--custom-primary-color);

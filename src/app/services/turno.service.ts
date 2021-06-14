@@ -48,7 +48,7 @@ export class TurnoService {
 /* -------------------------------------------------------------------------- */
 /*                  CONFIGURACION DE PUESTO, SECTOR Y USUARIO                 */
 /* -------------------------------------------------------------------------- */
-  
+
   getSectorByUsuario(usuario_id: string) {
     return this.http.get<any[]>(this.url + 'turnos/usuario/sector?usuario_id=' + usuario_id );
     }
@@ -62,7 +62,7 @@ export class TurnoService {
   }
 
 
-  
+
   getSector() {
     return this.http.get<any[]>(this.url + 'mantenimiento/sector');
     }
@@ -101,12 +101,48 @@ export class TurnoService {
     return this.http.delete<any>(this.url + 'mantenimiento/sector/usuario/asociar/' + sector_usuario_asociado_id);
   }
 
+
+
+  getRegla() {
+    return this.http.get<any[]>(this.url + 'mantenimiento/regla');
+    }
+
+  setRegla(usuario: any) {
+    return this.http.post<any>(this.url + 'mantenimiento/regla', usuario);
+  }
+
+  putRegla(id: string, usuario: any) {
+    return this.http.put<any>(this.url + 'mantenimiento/regla/' + id, usuario);
+  }
+
+
+  getSectorRegla() {
+    return this.http.get<any[]>(this.url + 'mantenimiento/regla/sector');
+    }
+
+    getSectorReglaBySectorId(sectorId: string) {
+      return this.http.get<any[]>(this.url + 'mantenimiento/regla/sector/by/sector/id?sector_usuario_id=' + sectorId);
+    }
+
+
+  setSectorReglaa(usuario: any) {
+    return this.http.post<any>(this.url + 'mantenimiento/regla/sector', usuario);
+  }
+
+  putSectorRegla(id: string, usuario: any) {
+    return this.http.put<any>(this.url + 'mantenimiento/regla/sector/' + id, usuario);
+  }
+
+  delSectorRegla(id: string) {
+    return this.http.delete<string>(this.url + 'mantenimiento/regla/sector/' + id);
+    }
+
 /* -------------------------------------------------------------------------- */
 /*                                   VIDEOS                                   */
 /* -------------------------------------------------------------------------- */
 
 
-  
+
 getMultimedia() {
   return this.http.get<any[]>(this.url + 'multimedia/ordenado');
   }
@@ -114,8 +150,12 @@ getMultimedia() {
   UploadFileDatos(archivos: any){
     return this.http.post<any>(this.url + 'multiuploads/multimedia/datos', archivos);
   }
-  
+
   UploadFileDatosUpdate (archivos: any, id: string) {
     return this.http.put<any>(this.url + 'multiuploads/multimedia/datos/' + id, archivos);
   }
+
+  delMultimedia(id: string) {
+    return this.http.delete<string>(this.url + 'multimedia/' + id);
+    }
 }

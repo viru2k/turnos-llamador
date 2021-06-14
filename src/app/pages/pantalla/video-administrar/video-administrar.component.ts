@@ -47,7 +47,7 @@ export class VideoAdministrarComponent implements OnInit {
               this.loading = false;
               console.log(resp);
             }
-           
+
         },
         error => { // error path
             console.log(error);
@@ -85,7 +85,7 @@ buscar(elemento: any) {
   // tslint:disable-next-line: no-shadowed-variable
   ref.onClose.subscribe((PopupVideoComponent: any) => {
     if (PopupVideoComponent) {
-      
+
       this.loadlist();
     }
 
@@ -120,6 +120,24 @@ nuevo() {
 
 eliminar(event) {
 
+  this.loading = true;
+  try {
+      this.turnoService.delMultimedia(event.id)
+      .subscribe(resp => {
+          if(resp[0]){
+            this.loadlist();
+            this.loading = false;
+            console.log(resp);
+          }
+
+      },
+      error => { // error path
+          console.log(error);
+          this.alertServiceService.throwAlert('error', 'Error: ' + error.status + '  Error al cargar los registros', '', '500');
+       });
+  } catch (error) {
+    this.alertServiceService.throwAlert('error', 'Error: ' + error.status + '  Error al cargar los registros', '', '500');
+  }
 }
 }
 

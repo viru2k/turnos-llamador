@@ -7,6 +7,7 @@ import { UsuarioModuloComponent } from './../usuario-modulo/usuario-modulo.compo
 import { UsuarioEditarComponent } from './../usuario-editar/usuario-editar.component';
 import { UsuarioSectorComponent } from './../usuario-sector/usuario-sector.component';
 import { UsuarioSectorAsociarComponent } from '../usuario-sector-asociar/usuario-sector-asociar.component';
+import { ReglasComponent } from '../reglas/reglas.component';
 
 @Component({
   selector: 'app-usuario',
@@ -26,13 +27,14 @@ export class UsuarioComponent implements OnInit {
 
     this.cols = [
     
-      { field: 'nombreyapellido', header: 'Nombre y apellido',  width: '50%' },
+      { field: 'nombreyapellido', header: 'Nombre y apellido',  width: '30%' },
       { field: 'email', header: 'Usuario',  width: '30%' },
       { field: '', header: 'Puesto',  width: '10%' },
       { field: '', header: 'Asociar',  width: '10%' },
+      { field: '', header: 'Reglas',  width: '10%' },
       { field: '', header: 'Permisos',  width: '10%' },
       { field: '', header: 'Contraseña',  width: '10%' },
-      { field: '', header: 'Acción',  width: '10%' }
+      { field: '', header: 'Editar',  width: '10%' }
       
       
    ];
@@ -122,9 +124,7 @@ editarPermiso(elemento: any) {
     if (UsuarioModulo) {
       this.loadlist();
     }
-
   });
-
 }
 
 
@@ -166,6 +166,24 @@ editarSectorAsociacion(elemento: any) {
 
   });
 
+}
+
+editarReglas(elemento: any) {
+  console.log(elemento);  
+  const data: any = elemento;
+  const ref = this.dialogService.open(ReglasComponent, {
+  data,
+   header: 'Editar reglas',
+   width: '75%',
+   height: '60%'
+  });
+
+  // tslint:disable-next-line: no-shadowed-variable
+  ref.onClose.subscribe((ReglasComponent: any) => {
+    if (ReglasComponent) {
+      this.loadlist();
+    }
+  });
 }
 
 nuevo() {
