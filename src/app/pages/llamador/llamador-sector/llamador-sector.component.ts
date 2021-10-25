@@ -54,12 +54,13 @@ export class LlamadorSectorComponent implements OnInit {
     console.log("llamando proximo");
     const turnoDato = JSON.parse(localStorage.getItem("turnoDato"));
     console.log(turnoDato);
-    this.turnoService.getProximoNumero(turnoDato[0]["sector_id"]).subscribe(
+    this.turnoService.getProximoNumero(turnoDato[0]["id"]).subscribe(
       (resp) => {
         if (resp) {
           console.log(resp);
+
           this.puesto = [];
-          this.puesto = resp;
+          this.puesto = resp[0];
         }
 
         this.loading = false;
@@ -81,8 +82,8 @@ export class LlamadorSectorComponent implements OnInit {
   llamar() {
     const turnoDato = JSON.parse(localStorage.getItem("turnoDato"));
     console.log(turnoDato);
-    console.log(turnoDato[0]["sector_id"]);
-    this.turnoService.Llamar(turnoDato[0]["sector_id"]).subscribe(
+    console.log(turnoDato[0]["id"]);
+    this.turnoService.Llamar(turnoDato[0]["id"]).subscribe(
       (resp) => {
         console.log(resp);
         this.puesto = [];
