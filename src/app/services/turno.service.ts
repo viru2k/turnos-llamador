@@ -79,7 +79,7 @@ export class TurnoService {
   getListadoAtencionByDates(fecha_desde: string, fecha_hasta: string) {
     return this.http.get<any[]>(
       this.url +
-        "  turnos/atendidos/by/dates?fecha_desde=" +
+        "turnos/atendidos/by/dates?fecha_desde=" +
         fecha_desde +
         "&fecha_hasta=" +
         fecha_hasta
