@@ -39,7 +39,7 @@
     "hammerjs": "~2.0.8",
     "hover.css": "^2.3.2",
     "jquery": "^3.5.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "jspdf-autotable": "^2.3.5",
     "kind-of": "^6.0.3",
     "moment": "^2.22.2",
